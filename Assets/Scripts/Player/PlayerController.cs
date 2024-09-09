@@ -12,7 +12,7 @@ namespace Assets.Scripts.Player
         [SerializeField] float lookMod = 10;
         [SerializeField] float moveMod = 5;
         [SerializeField] Rigidbody rb;
-        Camera cam;
+        public Camera cam;
         Vector2 look;
         Vector2 move;
 

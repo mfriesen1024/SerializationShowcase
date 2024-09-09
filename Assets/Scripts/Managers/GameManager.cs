@@ -8,16 +8,16 @@ namespace Assets.Scripts.Managers
         /// <summary>
         /// Represents the player.
         /// </summary>
-        PlayerController playerController;
+        public PlayerController playerController {  get; private set; }
         /// <summary>
         /// Used to save data.
         /// </summary>
-        public DataManager dataManager = new DataManager();
+        public DataManager dataManager { get; private set; } = new DataManager();
         /// <summary>
         /// Used to manage what area player is in.
         /// </summary>
-        public AreaManager areaManager = new AreaManager();
-        public UIManager uiManager;
+        public AreaManager areaManager { get; private set; } = new AreaManager();
+        public UIManager uiManager {  get; private set; }
 
         public static GameManager Instance;
 
