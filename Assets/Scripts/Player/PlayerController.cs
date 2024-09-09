@@ -1,4 +1,5 @@
 using Assets.Scripts.Managers;
+using Assets.Scripts.Obj;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -44,6 +45,10 @@ namespace Assets.Scripts.Player
         {
             LookUpdate();
             MoveUpdate();
+        }
+        private void FixedUpdate()
+        {
+            Tick();
         }
         void LookUpdate()
         {
@@ -92,6 +97,38 @@ namespace Assets.Scripts.Player
             }
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            // track if we should hide the obj.
+            bool shouldRemove = false;
+            // If its a brick, mark the brick as collected.
+            if (other.TryGetComponent(typeof(Brick), out Component b))
+            {
+                shouldRemove = true;
+                statMan.bricks[((Brick)b).brickID] = true;
+            }
+            // if its a coin, add xp and score.
+            if (other.TryGetComponent(typeof(Coin), out Component c))
+            {
+                shouldRemove = true;
+                statMan.xp += 10;
+                statMan.Score += 10;
+            }
+            // if its a checkpoint, track this as our last checkpoint.
+            if (other.TryGetComponent(typeof(CheckpointComponent), out Component cc))
+            {
+                statMan.lastCheckpoint = ((CheckpointComponent)cc).data;
+            }
+            // if its a trap, deal damage to player.
+            if(other.TryGetComponent(typeof(Trap),out Component t))
+            {
+                statMan.hp -= 8;
+            }
+
+            // if it should be disabled, disable it.
+            if (shouldRemove) { other.gameObject.SetActive(false); }
+        }
+
         void OnLook(InputValue value)
         {
             look = value.Get<Vector2>();
@@ -112,7 +149,7 @@ namespace Assets.Scripts.Player
         // this is used to cast the spell. split for my sanity.
         void Cast()
         {
-
+            
         }
     }
 }
