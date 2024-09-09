@@ -8,7 +8,7 @@ namespace Assets.Scripts.Managers
         /// <summary>
         /// Represents the player.
         /// </summary>
-        PlayerController pc;
+        PlayerController playerController;
         /// <summary>
         /// Used to save data.
         /// </summary>
@@ -31,11 +31,13 @@ namespace Assets.Scripts.Managers
             {
                 GameObject player = GameObject.FindWithTag("Player");
                 if (player == null) { player = new GameObject("Player"); }
-                pc = player.GetComponent<PlayerController>();
-                if (pc == null) { pc = player.AddComponent<PlayerController>(); }
+                playerController = player.GetComponent<PlayerController>();
+                if (playerController == null) { playerController = player.AddComponent<PlayerController>(); }
 
-                pc.transform.parent = transform;
+                playerController.transform.parent = transform;
             }
+
+            DontDestroyOnLoad(gameObject);
         }
 
 
