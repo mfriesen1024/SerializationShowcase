@@ -38,9 +38,10 @@ namespace Assets.Scripts.Player
         {
             StatManager statMan = new();
 
+            // XP must be set first due to the xp setter raising maxhp/mp.
+            save.xp = statMan.xp;
             save.hp = statMan.hp;
             save.mp = statMan.mp;
-            save.xp = statMan.xp;
             save.score = statMan.Score;
 
             // progression stuff
