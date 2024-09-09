@@ -37,7 +37,7 @@
                 {
                     "name": "",
                     "id": "ded4fdf4-9e8e-458d-a41b-15583d063cc2",
-                    "path": "<Mouse>/{Primary2DMotion}",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

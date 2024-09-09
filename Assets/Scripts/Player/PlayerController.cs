@@ -8,6 +8,10 @@ namespace Assets.Scripts.Player
     {
         public StatManager statMan = new();
 
+        [SerializeField] float lookMod = 10;
+        [SerializeField] float moveMod = 5;
+        [SerializeField] Rigidbody rb;
+        Camera cam;
         Vector2 look;
         Vector2 move;
 
@@ -16,16 +20,61 @@ namespace Assets.Scripts.Player
         // Start is called before the first frame update
         void Start()
         {
+            GetCam();
+            GetRB();
 
+            void GetCam()
+            {
+                // Try to grab main camera. If one doesn't exist, make one.
+                cam = Camera.main != null ? Camera.main : new GameObject("Camera").AddComponent<Camera>();
+                // Snap cam position to our head.
+                cam.transform.parent = transform;
+                cam.transform.localPosition = new(0, 0.5f, 0);
+            }
+
+            void GetRB()
+            {
+                // if rb is null, try to fetch one, and if that fails, make one.
+                if (rb == null) { Rigidbody getRB = GetComponent<Rigidbody>(); rb = getRB != null ? getRB : gameObject.AddComponent<Rigidbody>(); }
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            LookUpdate();
+            MoveUpdate();
         }
+        void LookUpdate()
+        {
+            float delta = Time.deltaTime;
+            Vector3 camEA = cam.transform.eulerAngles;
+            Vector3 playerEA = transform.eulerAngles;
 
-        
+            // Vertical component.
+            float vComp = -look.y * delta * lookMod;
+            // Keep vertical between 0 and 90 or 360 and 270.
+            if (vComp > 180) { vComp = vComp < 270 ? vComp : 270; }
+            else { vComp = vComp < 90 ? vComp : 90; }
+            // Set value
+            camEA = new(camEA.x + vComp, 0, 0);
+
+            // Horizontal component.
+            float hComp = look.x * delta * lookMod;
+            playerEA.y = playerEA.y + hComp;
+
+            // Set values.
+            cam.transform.localEulerAngles = camEA;
+            transform.localEulerAngles = playerEA;
+        }
+        void MoveUpdate()
+        {
+            float delta = Time.deltaTime;
+            Vector3 moveVector = transform.forward * move.y + transform.right * move.x;
+            Vector3 moveValue = moveVector * moveMod * delta;
+            Vector3 newPos = transform.position + moveValue;
+            rb.Move(newPos, transform.rotation);
+        }
 
         /// <summary>
         /// Used to ensure stats are only ticked every 4 fixedupdate ticks.
@@ -46,11 +95,13 @@ namespace Assets.Scripts.Player
         void OnLook(InputValue value)
         {
             look = value.Get<Vector2>();
+            Debug.Log(look);
         }
 
         void OnMove(InputValue value)
         {
             move = value.Get<Vector2>();
+            Debug.Log(move);
         }
 
         void OnFire()
