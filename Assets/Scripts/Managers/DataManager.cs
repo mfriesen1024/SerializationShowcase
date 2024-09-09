@@ -10,8 +10,14 @@ namespace Assets.Scripts.Managers
     {
         public PlayerController PlayerController;
 
-        string dataPath = Application.persistentDataPath + "\\saveData\\";
+        string dataPath;
         string playerFile = "player.dat";
+
+        public void Init()
+        {
+            dataPath = Application.persistentDataPath + "\\saveData\\";
+            PlayerController = GameManager.Instance.playerController;
+        }
 
         /// <summary>
         /// Should load and unpack all data from files.
@@ -43,6 +49,7 @@ namespace Assets.Scripts.Managers
                         // deserialize.
                         FileStream fs = File.OpenRead(dataPath + playerFile);
                         PlayerController.statMan = (PlayerSave)binaryFormatter.Deserialize(fs);
+                        fs.Close();
                     }
                 }
                 else { Directory.CreateDirectory(dataPath); }
@@ -71,6 +78,7 @@ namespace Assets.Scripts.Managers
 
                 FileStream fs = File.Create(dataPath + playerFile);
                 binaryFormatter.Serialize(fs, (PlayerSave)PlayerController.statMan);
+                fs.Close();
             }
         }
     }

@@ -23,6 +23,11 @@ namespace Assets.Scripts.Managers
 
         private void Start()
         {
+            // If instance isn't null, destroy this instance and don't run anything else.
+            // Otherwise, we should be instance.
+            if (Instance != null) { Destroy(gameObject); return; }
+            else { Instance = this; }
+
             FindPlayer();
             // This has to be in inspector, we can't just make it.
             uiManager = GetComponent<UIManager>();
@@ -38,9 +43,11 @@ namespace Assets.Scripts.Managers
                 playerController.transform.parent = transform;
             }
 
+            dataManager.Init();
+
+            // If we got this far, we're obviously the singleton instance, so setup don't destroy on load.
             DontDestroyOnLoad(gameObject);
         }
-
 
         private void Update()
         {

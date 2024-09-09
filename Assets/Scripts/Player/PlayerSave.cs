@@ -53,4 +53,31 @@ namespace Assets.Scripts.Player
             return save;
         }
     }
+
+    /// <summary>
+    /// A serializable vector3
+    /// </summary>
+    [Serializable]
+    public struct sv3
+    {
+            public float x, y, z;
+
+        public static implicit operator sv3(Vector3 v)
+        {
+            sv3 sv = new sv3();
+            sv.x = v.x;
+            sv.y = v.y;
+            sv.z = v.z;
+            return sv;
+        }
+
+        public static implicit operator Vector3(sv3 sv)
+        {
+            Vector3 v = new Vector3();
+            v.x = sv.x;
+            v.y = sv.y;
+            v.z = sv.z;
+            return v;
+        }
+    }
 }

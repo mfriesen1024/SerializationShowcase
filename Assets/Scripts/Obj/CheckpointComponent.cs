@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Player;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +39,6 @@ namespace Assets.Scripts.Obj
         }; } }
 
         public int sceneNum;
-        public Vector3 position;
+        public sv3 position;
     }
 }
