@@ -6,6 +6,8 @@ namespace Assets.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        StatManager statMan = new();
+
         Vector2 look;
         Vector2 move;
 
