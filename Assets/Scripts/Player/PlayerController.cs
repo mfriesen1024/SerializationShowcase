@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Player
+namespace Assets.Scripts.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        StatManager statMan = new();
+        public StatManager statMan = new();
 
         Vector2 look;
         Vector2 move;
