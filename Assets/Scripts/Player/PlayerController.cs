@@ -6,6 +6,9 @@ namespace Assets.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        Vector2 look;
+        Vector2 move;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -14,6 +17,21 @@ namespace Assets.Player
 
         // Update is called once per frame
         void Update()
+        {
+
+        }
+
+        void OnLook()
+        {
+
+        }
+
+        void OnMove()
+        {
+
+        }
+
+        void OnFire()
         {
 
         }
