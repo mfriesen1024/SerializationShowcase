@@ -29,6 +29,7 @@ namespace Assets.Scripts.Managers
 
             void FindPlayer()
             {
+                // Find or create the player and its controller script.
                 GameObject player = GameObject.FindWithTag("Player");
                 if (player == null) { player = new GameObject("Player"); }
                 playerController = player.GetComponent<PlayerController>();
