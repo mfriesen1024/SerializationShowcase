@@ -5,11 +5,11 @@
     /// </summary>
     internal class StatManager
     {
-        public int hp, mp, xp, score;
-        public int lastCheckpoint;
+        public int hp = 10, mp = 10, xp = 0, score = 0;
+        public int lastCheckpoint = -1;
         /// <summary>
         /// Progression indicator.
         /// </summary>
-        public bool[] bricks;
+        public bool[] bricks = new bool[3] {false,false,false };
     }
 }
