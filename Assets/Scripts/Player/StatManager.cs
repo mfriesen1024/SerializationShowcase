@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Obj;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -17,7 +18,7 @@ namespace Assets.Scripts.Player
         private int _xp = 0;
         private int score = 0;
         private int level = 0;
-        public int lastCheckpoint = -1;
+        public CheckpointInfo lastCheckpoint = CheckpointInfo.defaultCheckpoint;
         public int hp { get => _hp; set => SetHP(value); }
         public int mp { get => _mp; set => SetMP(value); }
         public int xp { get => _xp; set => SetXP(value); }

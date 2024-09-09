@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Assets.Scripts.Obj;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -10,7 +12,7 @@ namespace Assets.Scripts.Player
     internal class PlayerSave
     {
         public int hp = 10, mp = 10, xp = 0, score = 0;
-        public int lastCheckpoint = -1;
+        public CheckpointInfo lastCheckpoint = CheckpointInfo.defaultCheckpoint;
         /// <summary>
         /// Progression indicator.
         /// </summary>
@@ -39,16 +41,16 @@ namespace Assets.Scripts.Player
             StatManager statMan = new();
 
             // XP must be set first due to the xp setter raising maxhp/mp.
-            save.xp = statMan.xp;
-            save.hp = statMan.hp;
-            save.mp = statMan.mp;
-            save.score = statMan.Score;
+            statMan.xp = save.xp;
+            statMan.hp = save.hp;
+            statMan.mp = save.mp;
+            statMan.Score = save.score;
 
             // progression stuff
-            save.lastCheckpoint = statMan.lastCheckpoint;
-            save.bricks = statMan.bricks;
+            statMan.lastCheckpoint = save.lastCheckpoint;
+            statMan.bricks = save.bricks;
 
-            return statMan;
+            return save;
         }
     }
 }
