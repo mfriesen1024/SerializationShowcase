@@ -1,6 +1,4 @@
 using Assets.Scripts.Managers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,26 +25,22 @@ namespace Assets.Scripts.Player
 
         }
 
-        private void FixedUpdate()
-        {
-
-            
-            // Stats ticking. Ensure stats only tick every 4 fixedupdates.
-            if(tickNum == 0) { StatsTick(); }
-            tickNum++; if (tickNum == 4) { tickNum = 0; }
-        }
+        
 
         /// <summary>
         /// Used to ensure stats are only ticked every 4 fixedupdate ticks.
         /// </summary>
-        void StatsTick()
+        void Tick()
         {
-            // heal the player and give them more mp.
-            statMan.hp++;
-            statMan.mp++;
+            // Stats ticking. Ensure stats only tick every 4 fixedupdates.
+            if (tickNum == 0) { statMan.StatsTick(); }
 
-            // save stats, im too lazy to do manually.
-            GameManager.Instance.dm.Save();
+            // Every second, reset the tick count and save data.
+            tickNum++; if (tickNum == 20)
+            {
+                tickNum = 0;
+                GameManager.Instance.dm.Save();
+            }
         }
 
         void OnLook(InputValue value)
@@ -61,7 +55,7 @@ namespace Assets.Scripts.Player
 
         void OnFire()
         {
-            if(statMan.mp > 0) { Cast(); statMan.mp--; }
+            if (statMan.mp > 0) { Cast(); statMan.mp--; }
         }
 
         // this is used to cast the spell. split for my sanity.
