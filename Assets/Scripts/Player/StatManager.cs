@@ -22,6 +22,8 @@
         public int Score { get => score; set => score=value; }
         public int Level { get => level; }
 
+
+
         // Set the xp and define a level system.
         void SetXP(int value)
         {
@@ -43,6 +45,18 @@
 
             // save the level
             level = nextLevel;
+        }
+
+        // used to rangecheck
+        void SetHP(int value)
+        {
+            if(value > )
+        }
+
+        // used to rangecheck
+        void SetMP()
+        {
+
         }
     }
 }
