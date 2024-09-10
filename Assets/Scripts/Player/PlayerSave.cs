@@ -50,7 +50,7 @@ namespace Assets.Scripts.Player
             statMan.lastCheckpoint = save.lastCheckpoint;
             statMan.bricks = save.bricks;
 
-            return save;
+            return statMan;
         }
     }
 
