@@ -44,7 +44,7 @@ namespace Assets.Scripts.Player
         void Update()
         {
             LookUpdate();
-            MoveUpdate();
+            VelocityUpdate();
         }
         private void FixedUpdate()
         {
@@ -72,13 +72,14 @@ namespace Assets.Scripts.Player
             cam.transform.localEulerAngles = camEA;
             transform.localEulerAngles = playerEA;
         }
-        void MoveUpdate()
+        void VelocityUpdate()
         {
-            float delta = Time.deltaTime;
             Vector3 moveVector = transform.forward * move.y + transform.right * move.x;
-            Vector3 moveValue = moveVector * moveMod * delta;
-            Vector3 newPos = transform.position + moveValue;
-            rb.Move(newPos, transform.rotation);
+            Vector3 moveValue = moveVector * moveMod;
+            // allow gravity to still work.
+            moveValue.y = rb.velocity.y;
+            // apply things.
+            rb.velocity = moveValue;
         }
 
         /// <summary>
