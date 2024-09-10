@@ -89,11 +89,12 @@ namespace Assets.Scripts.Player
             // Stats ticking. Ensure stats only tick every 4 fixedupdates.
             if (tickNum == 0) { statMan.StatsTick(); }
 
-            // Every second, reset the tick count and save data.
+            // Every second, reset the tick count, save data, and update ui.
             tickNum++; if (tickNum == 20)
             {
                 tickNum = 0;
                 GameManager.Instance.dataManager.Save();
+                GameManager.Instance.uiManager.TextUpdate(statMan.hp,statMan.mp,statMan.xp,statMan.Level,statMan.Score);
             }
         }
 

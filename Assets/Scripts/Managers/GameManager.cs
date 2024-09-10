@@ -22,17 +22,26 @@ namespace Assets.Scripts.Managers
         public AreaManager areaManager { get; private set; } = new AreaManager();
         public UIManager uiManager { get; private set; }
 
+        /// <summary>
+        /// The singleton instance of the GM.
+        /// </summary>
         public static GameManager Instance;
+        /// <summary>
+        /// Number of instantiated GMs
+        /// </summary>
+        public static int GMCount = 0;
 
         public CheckpointInfo lastCheckpoint { get { return PlayerController.statMan.lastCheckpoint; } }
 
 
         private void Start()
         {
-            // If instance isn't null, destroy this instance and don't run anything else.
-            // Otherwise, we should be instance.
-            if (Instance != null) { Destroy(gameObject); return; }
-            else { Instance = this; }
+            // Raise the gm count before we do anything else.
+            GMCount++;
+            // If instance isn't null, un-count ourselves, destroy this instance and don't run anything else.
+            // Otherwise, we should be instance, don't uncount ourselves, and dont destroy on load.
+            if (Instance != null) { GMCount--; Destroy(gameObject); return; }
+            else { Instance = this; DontDestroyOnLoad(gameObject); }
 
             // Make player.
             playerController = Instantiate(pcTemplate).GetComponent<PlayerController>();
@@ -44,7 +53,8 @@ namespace Assets.Scripts.Managers
             Init();
 
             // If we got this far, we're obviously the singleton instance, so setup don't destroy on load.
-            DontDestroyOnLoad(gameObject);
+            // Idk if we need to do this after everything else.
+            //DontDestroyOnLoad(gameObject);
         }
 
         // Initialize things here so we can control initialization order.

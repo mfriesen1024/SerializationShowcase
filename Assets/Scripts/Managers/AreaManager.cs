@@ -1,12 +1,5 @@
 ﻿using Assets.Scripts.Obj;
-using Assets.Scripts.Player;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Diagnostics;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Managers
@@ -23,11 +16,10 @@ namespace Assets.Scripts.Managers
         {
             SceneManager.LoadScene(id);
 
-            // I never want to return to scene 0, so just send to state 1 because I'm lazy.
-            // We could sort scenes and other garbage, but thats out of scope.
-            GameManager.Instance.uiManager.UIState = 1;
+            // Only set uistate if returning to menu.
+            GameManager.Instance.uiManager.UIState = id == 0 ? 0 : 1;
 
-             GameManager.Instance.PlayerController.transform.position = Vector3.zero; 
+            GameManager.Instance.PlayerController.transform.position = Vector3.zero;
         }
 
         /// <summary>
