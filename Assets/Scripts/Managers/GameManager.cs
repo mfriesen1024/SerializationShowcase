@@ -10,7 +10,8 @@ namespace Assets.Scripts.Managers
         /// Represents the player.
         /// </summary>
         public PlayerController PlayerController { get => playerController; }
-        [SerializeField]private PlayerController playerController;
+        private PlayerController playerController;
+        [SerializeField] GameObject pcTemplate;
         /// <summary>
         /// Used to save data.
         /// </summary>
@@ -33,20 +34,12 @@ namespace Assets.Scripts.Managers
             if (Instance != null) { Destroy(gameObject); return; }
             else { Instance = this; }
 
-            FindPlayer();
+            // Make player.
+            playerController = Instantiate(pcTemplate).GetComponent<PlayerController>();
+            PlayerController.transform.parent = transform;
+
             // This has to be in inspector, we can't just make it.
             uiManager = GetComponent<UIManager>();
-
-            void FindPlayer()
-            {
-                // Find or create the player and its controller script.
-                GameObject player = GameObject.FindWithTag("Player");
-                if (player == null) { player = new GameObject("Player"); }
-                playerController = player.GetComponent<PlayerController>();
-                if (PlayerController == null) { playerController = player.AddComponent<PlayerController>(); }
-
-                PlayerController.transform.parent = transform;
-            }
 
             Init();
 

@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e392644242ee64a89967a2730eafc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 3555072404692475597, guid: 24563127aeda06a4e8ea3534303bfb9c, type: 3}
+  pcTemplate: {fileID: 6729696939186821038, guid: 24563127aeda06a4e8ea3534303bfb9c, type: 3}
 --- !u!4 &175294639
 Transform:
   m_ObjectHideFlags: 0
