@@ -8,7 +8,7 @@ namespace Assets.Scripts.Managers
         /// <summary>
         /// Represents the player.
         /// </summary>
-        public PlayerController playerController {  get; private set; }
+        public PlayerController playerController { get; private set; }
         /// <summary>
         /// Used to save data.
         /// </summary>
@@ -17,7 +17,7 @@ namespace Assets.Scripts.Managers
         /// Used to manage what area player is in.
         /// </summary>
         public AreaManager areaManager { get; private set; } = new AreaManager();
-        public UIManager uiManager {  get; private set; }
+        public UIManager uiManager { get; private set; }
 
         public static GameManager Instance;
 
@@ -43,10 +43,17 @@ namespace Assets.Scripts.Managers
                 playerController.transform.parent = transform;
             }
 
-            dataManager.Init();
+            Init();
 
             // If we got this far, we're obviously the singleton instance, so setup don't destroy on load.
             DontDestroyOnLoad(gameObject);
+        }
+
+        // Initialize things here so we can control initialization order.
+        void Init()
+        {
+            dataManager.Init();
+            uiManager.Init();
         }
 
         private void Update()

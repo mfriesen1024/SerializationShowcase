@@ -17,7 +17,7 @@ namespace Assets.Scripts.Managers
         public int UIState { get => uiState; set { SetUIState(value); } }
         int uiState;
 
-        private void Start()
+        public void Init()
         {
 
             UIState = 0;
