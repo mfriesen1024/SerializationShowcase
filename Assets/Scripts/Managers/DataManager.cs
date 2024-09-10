@@ -16,7 +16,7 @@ namespace Assets.Scripts.Managers
         public void Init()
         {
             dataPath = Application.persistentDataPath + "\\saveData\\";
-            PlayerController = GameManager.Instance.playerController;
+            PlayerController = GameManager.Instance.PlayerController;
         }
 
         /// <summary>

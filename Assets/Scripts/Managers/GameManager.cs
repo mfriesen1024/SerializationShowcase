@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Player;
+﻿using Assets.Scripts.Obj;
+using Assets.Scripts.Player;
 using UnityEngine;
 
 namespace Assets.Scripts.Managers
@@ -8,7 +9,8 @@ namespace Assets.Scripts.Managers
         /// <summary>
         /// Represents the player.
         /// </summary>
-        public PlayerController playerController { get; private set; }
+        public PlayerController PlayerController { get => playerController; }
+        [SerializeField]private PlayerController playerController;
         /// <summary>
         /// Used to save data.
         /// </summary>
@@ -20,6 +22,9 @@ namespace Assets.Scripts.Managers
         public UIManager uiManager { get; private set; }
 
         public static GameManager Instance;
+
+        public CheckpointInfo lastCheckpoint { get { return PlayerController.statMan.lastCheckpoint; } }
+
 
         private void Start()
         {
@@ -38,9 +43,9 @@ namespace Assets.Scripts.Managers
                 GameObject player = GameObject.FindWithTag("Player");
                 if (player == null) { player = new GameObject("Player"); }
                 playerController = player.GetComponent<PlayerController>();
-                if (playerController == null) { playerController = player.AddComponent<PlayerController>(); }
+                if (PlayerController == null) { playerController = player.AddComponent<PlayerController>(); }
 
-                playerController.transform.parent = transform;
+                PlayerController.transform.parent = transform;
             }
 
             Init();

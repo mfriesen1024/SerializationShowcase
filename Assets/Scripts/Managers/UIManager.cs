@@ -30,7 +30,7 @@ namespace Assets.Scripts.Managers
 
             // if new game, load level 1 with no questions asked.
             ng.onClick.AddListener(() => { am.LoadScene(1); });
-            lg.onClick.AddListener(() => { throw new NotImplementedException("aaa!"); });
+            lg.onClick.AddListener(() => { GameManager.Instance.dataManager.Load(); am.LoadFromCheckpoint(GameManager.Instance.lastCheckpoint); });
             sc1.onClick.AddListener(() => { LoadButton(1); });
             sc2.onClick.AddListener(() => { LoadButton(2); });
             sc3.onClick.AddListener(() => { LoadButton(3); });

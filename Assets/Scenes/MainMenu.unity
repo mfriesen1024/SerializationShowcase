@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 80367199}
   - component: {fileID: 80367198}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,6 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e392644242ee64a89967a2730eafc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 3555072404692475597, guid: 24563127aeda06a4e8ea3534303bfb9c, type: 3}
 --- !u!4 &175294639
 Transform:
   m_ObjectHideFlags: 0
