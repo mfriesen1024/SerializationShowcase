@@ -31,7 +31,7 @@ namespace Assets.Scripts.Player
         public bool[] bricks = new bool[3] { false, false, false };
 
         /// <summary>
-        /// Called every 4 game ticks, resulting in healing 5 hp and 5 mp per second.
+        /// Called every 10 game ticks, resulting in healing 5 hp and 5 mp per second.
         /// </summary>
         public void StatsTick()
         {

@@ -83,12 +83,12 @@ namespace Assets.Scripts.Player
         }
 
         /// <summary>
-        /// Used to ensure stats are only ticked every 4 fixedupdate ticks.
+        /// Used to ensure stats are only ticked every 10 fixedupdate ticks.
         /// </summary>
         void Tick()
         {
-            // Stats ticking. Ensure stats only tick every 4 fixedupdates.
-            if (tickNum == 0) { statMan.StatsTick(); }
+            // Stats ticking. Ensure stats only tick every 10 fixedupdates.
+            if (tickNum == 0 || tickNum == 10) { statMan.StatsTick(); }
 
             // Every second, reset the tick count, save data, and update ui.
             tickNum++; if (tickNum == 20)
