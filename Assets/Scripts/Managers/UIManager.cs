@@ -42,8 +42,8 @@ namespace Assets.Scripts.Managers
         {
             switch(state)
             {
-                case 0: hud.gameObject.SetActive(false); if (Camera.main != null) { Camera.main.enabled = false; } menu.gameObject.SetActive(true); break;
-                case 1: hud.gameObject.SetActive(true); if (Camera.main != null) { Camera.main.enabled = false; } menu.gameObject.SetActive(false); break;
+                case 0: hud.gameObject.SetActive(false); menu.gameObject.SetActive(true); break;
+                case 1: hud.gameObject.SetActive(true); menu.gameObject.SetActive(false); break;
             }
 
             uiState = state;
