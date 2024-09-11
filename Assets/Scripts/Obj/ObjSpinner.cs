@@ -15,6 +15,7 @@ namespace Assets.Scripts.Obj
             // Spin the object.
             Vector3 rot = transform.eulerAngles;
             rot.z += 30*Time.deltaTime;
+            transform.eulerAngles = rot;
         }
     }
 }
