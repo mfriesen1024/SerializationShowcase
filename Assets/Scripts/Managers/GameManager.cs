@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Managers
 {
-    internal class GameManager : MonoBehaviour
+    internal partial class GameManager : MonoBehaviour
     {
         /// <summary>
         /// Represents the player.
@@ -33,6 +33,10 @@ namespace Assets.Scripts.Managers
 
         public CheckpointInfo lastCheckpoint { get { return PlayerController.statMan.lastCheckpoint; } }
 
+        /// <summary>
+        /// Used to save every minute.
+        /// </summary>
+        TickCounter saveTimer;
 
         private void Start()
         {
@@ -62,6 +66,8 @@ namespace Assets.Scripts.Managers
         {
             dataManager.Init();
             uiManager.Init();
+
+            saveTimer = new TickCounter() { interval = 1200, action = () => dataManager.Save() };
         }
 
         private void Update()
