@@ -68,7 +68,8 @@ namespace Assets.Scripts.Player
         void SetHP(int value)
         {
             if(value > maxHPMP) { _hp = maxHPMP; }
-            else if(value <= 0) { _hp = 0; Debug.LogWarning("HP is 0, player should die here."); }
+            // Kill player if 0 hp by send to title screen.
+            else if(value <= 0) { _hp = 0; GameManager.Instance.areaManager.LoadScene(0); }
             else { _hp = value; }
         }
 
