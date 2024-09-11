@@ -15,10 +15,6 @@ namespace Assets.Scripts.Obj
 
         private void Start()
         {
-            // Construct the checkpointinfo object.
-            data = new CheckpointInfo();
-            data.position = transform.position;
-            data.sceneNum = SceneManager.GetActiveScene().buildIndex;
         }
     }
 
