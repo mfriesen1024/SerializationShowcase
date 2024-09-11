@@ -13,6 +13,12 @@ namespace Assets.Scripts.Obj
     [RequireComponent(typeof(Collider))]
     internal class Brick:MonoBehaviour
     {
+        ObjSpinner spinner;
+
+        private void Start()
+        {
+            spinner = (ObjSpinner)gameObject.AddComponent(typeof(ObjSpinner));
+        }
         /// <summary>
         /// Which brick number is this? Used to determine completion.
         /// </summary>

@@ -13,5 +13,11 @@ namespace Assets.Scripts.Obj
     [RequireComponent(typeof(Collider))]
     internal class Coin:MonoBehaviour
     {
+        ObjSpinner spinner;
+
+        private void Start()
+        {
+            spinner = (ObjSpinner)gameObject.AddComponent(typeof(ObjSpinner));
+        }
     }
 }
