@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Obj;
+﻿using Assets.Scripts.Managers;
+using Assets.Scripts.Obj;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Player
     internal class PlayerSave
     {
         public int hp = 10, mp = 10, xp = 0, score = 0;
-        public CheckpointInfo lastCheckpoint = CheckpointInfo.defaultCheckpoint;
+        public CheckpointInfo lastCheckpoint = DataManager.DefaultValueProvider.defaultCheckpoint;
         /// <summary>
         /// Progression indicator.
         /// </summary>
