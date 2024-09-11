@@ -61,7 +61,7 @@ namespace Assets.Scripts.Player
             }
 
             // save the level
-            level = nextLevel;
+            level = nextLevel-1;
         }
 
         // used to rangecheck
