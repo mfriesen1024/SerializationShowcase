@@ -33,7 +33,7 @@ namespace Assets.Scripts.Managers
             ms = mso.GetComponent<Button>();
 
             // if new game, load level 1 with no questions asked.
-            ng.onClick.AddListener(() => { am.LoadScene(1); });
+            ng.onClick.AddListener(() => { am.LoadScene(1); GameManager.Instance.PlayerController.statMan = new(); });
             lg.onClick.AddListener(() => { GameManager.Instance.dataManager.Load(); am.LoadFromCheckpoint(GameManager.Instance.lastCheckpoint); });
             sc1.onClick.AddListener(() => { LoadButton(1); });
             sc2.onClick.AddListener(() => { LoadButton(2); });
@@ -58,6 +58,8 @@ namespace Assets.Scripts.Managers
         {
             // load player data.
             GameManager.Instance.dataManager.Load();
+            // force player position
+            GameManager.Instance.PlayerController.transform.position = new(0,1,0);
 
             am.LoadScene(level);
         }
