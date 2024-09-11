@@ -127,7 +127,7 @@ namespace Assets.Scripts.Player
             // if its a trap, deal damage to player.
             if(other.TryGetComponent(typeof(Trap),out Component t))
             {
-                statMan.hp -= 8;
+                statMan.hp -= ((Trap)t).damage;
             }
 
             // if it should be disabled, disable it.

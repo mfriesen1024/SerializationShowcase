@@ -13,5 +13,6 @@ namespace Assets.Scripts.Obj
     [RequireComponent(typeof(Collider))]
     internal class Trap:MonoBehaviour
     {
+        public int damage = 16;
     }
 }
