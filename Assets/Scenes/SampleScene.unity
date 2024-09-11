@@ -757,6 +757,10 @@ PrefabInstance:
       value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 5474639104177756147, guid: 35705f5c61940ad45a0eec5c3af1f01d, type: 3}
+      propertyPath: data.position.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474639104177756147, guid: 35705f5c61940ad45a0eec5c3af1f01d, type: 3}
       propertyPath: data.position.z
       value: 3.5
       objectReference: {fileID: 0}
