@@ -7,6 +7,8 @@ namespace Assets.Scripts.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        const int CastMP = 3;
+
         public StatManager statMan = new();
 
         [SerializeField] float lookMod = 10;
@@ -146,7 +148,7 @@ namespace Assets.Scripts.Player
 
         void OnFire()
         {
-            if (statMan.mp > 0) { Cast(); statMan.mp--; }
+            if (statMan.mp - CastMP > 0) { Cast(); statMan.mp-=CastMP; }
         }
 
         // this is used to cast the spell. split for my sanity.
