@@ -11,7 +11,7 @@ namespace Assets.Scripts.Obj
     /// Hurts the player when run over.
     /// </summary>
     [RequireComponent(typeof(Collider))]
-    internal class Trap
+    internal class Trap:MonoBehaviour
     {
     }
 }
