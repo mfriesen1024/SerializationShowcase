@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f050373bd35f3a9479e65e8ff0d73c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookMod: 100
+  lookMod: 25
   moveMod: 5
   rb: {fileID: 6500513992195125708}
   cam: {fileID: 0}
