@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.Player;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,7 +9,7 @@ namespace Assets.Scripts.Obj
     /// Checkpoint stores player's last position.
     /// </summary>
     [RequireComponent(typeof(Collider))]
-    internal class CheckpointComponent:MonoBehaviour
+    internal class CheckpointComponent : MonoBehaviour
     {
         public CheckpointInfo data;
 
@@ -32,12 +28,6 @@ namespace Assets.Scripts.Obj
     [Serializable]
     public struct CheckpointInfo
     {
-        public static CheckpointInfo defaultCheckpoint { get { return new CheckpointInfo()
-        {
-            sceneNum = 0,
-            position = Vector3.zero
-        }; } }
-
         public int sceneNum;
         public sv3 position;
     }

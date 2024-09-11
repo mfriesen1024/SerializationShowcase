@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Player;
+﻿using Assets.Scripts.Obj;
+using Assets.Scripts.Player;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -16,7 +17,6 @@ namespace Assets.Scripts.Managers
         public void Init()
         {
             dataPath = Application.persistentDataPath + "\\saveData\\";
-            PlayerController = GameManager.Instance.PlayerController;
         }
 
         /// <summary>
@@ -24,6 +24,7 @@ namespace Assets.Scripts.Managers
         /// </summary>
         public void Load()
         {
+            PlayerController = GameManager.Instance.PlayerController;
             BinaryFormatter binaryFormatter = new();
 
             LoadPlayer();
@@ -61,6 +62,7 @@ namespace Assets.Scripts.Managers
 
         public void Save()
         {
+            PlayerController = GameManager.Instance.PlayerController;
             SavePlayer();
 
             void SavePlayer()
@@ -79,6 +81,21 @@ namespace Assets.Scripts.Managers
                 FileStream fs = File.Create(dataPath + playerFile);
                 binaryFormatter.Serialize(fs, (PlayerSave)PlayerController.statMan);
                 fs.Close();
+            }
+        }
+
+        public static class DefaultValueProvider
+        {
+            public static CheckpointInfo defaultCheckpoint
+            {
+                get
+                {
+                    return new CheckpointInfo()
+                    {
+                        sceneNum = 0,
+                        position = Vector3.zero
+                    };
+                }
             }
         }
     }
