@@ -71,6 +71,7 @@ namespace Assets.Scripts.Player
             // Set values.
             cam.transform.localEulerAngles = camEA;
             transform.localEulerAngles = playerEA;
+            rb.angularVelocity = Vector3.zero;
         }
         void VelocityUpdate()
         {
