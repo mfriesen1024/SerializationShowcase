@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Managers
 {
-    internal class UIManager:MonoBehaviour
+    internal class UIManager : MonoBehaviour
     {
         // UI types
-        [SerializeField]Canvas menu, hud;
+        [SerializeField] Canvas menu, hud;
         // Scene change/loaders.
-        [SerializeField]GameObject ngo,lgo,sc1o,sc2o,sc3o;
+        [SerializeField] GameObject ngo, lgo, sc1o, sc2o, sc3o;
         Button ng, lg, sc1, sc2, sc3;
         // Manual save
         [SerializeField] GameObject mso;
@@ -32,7 +26,7 @@ namespace Assets.Scripts.Managers
             UIState = 0;
 
             ng = ngo.GetComponent<Button>();
-            lg = lgo.GetComponent<Button> ();
+            lg = lgo.GetComponent<Button>();
             sc1 = sc1o.GetComponent<Button>();
             sc2 = sc2o.GetComponent<Button>();
             sc3 = sc3o.GetComponent<Button>();
@@ -51,7 +45,7 @@ namespace Assets.Scripts.Managers
 
         void SetUIState(int state)
         {
-            switch(state)
+            switch (state)
             {
                 case 0: hud.gameObject.SetActive(false); menu.gameObject.SetActive(true); break;
                 case 1: hud.gameObject.SetActive(true); menu.gameObject.SetActive(false); break;
@@ -64,7 +58,7 @@ namespace Assets.Scripts.Managers
         {
             // load player data.
             GameManager.Instance.dataManager.Load();
-            
+
             am.LoadScene(level);
         }
 
