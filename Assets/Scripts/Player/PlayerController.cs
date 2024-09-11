@@ -95,7 +95,7 @@ namespace Assets.Scripts.Player
             tickNum++; if (tickNum == 20)
             {
                 tickNum = 0;
-                GameManager.Instance.dataManager.Save();
+                //GameManager.Instance.dataManager.Save();
                 GameManager.Instance.uiManager.TextUpdate(statMan.hp,statMan.mp,statMan.xp,statMan.Level,statMan.Score);
             }
         }
