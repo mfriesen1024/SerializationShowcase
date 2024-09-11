@@ -152,7 +152,9 @@ namespace Assets.Scripts.Player
         // this is used to cast the spell. split for my sanity.
         void Cast()
         {
-            
+            GameObject box = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            if(!box.TryGetComponent(out Rigidbody _)) { box.AddComponent(typeof(Rigidbody)); }
+            box.transform.position = transform.position + transform.forward*2;
         }
     }
 }
