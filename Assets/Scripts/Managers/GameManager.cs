@@ -67,7 +67,7 @@ namespace Assets.Scripts.Managers
             dataManager.Init();
             uiManager.Init();
 
-            saveTimer = new TickCounter() { interval = 1200, action = () => dataManager.Save() };
+            saveTimer = new TickCounter() { interval = 1200, action = () => { dataManager.Save(); Debug.Log("Autosaved!"); } };
         }
 
         private void Update()
