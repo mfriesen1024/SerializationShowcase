@@ -881,7 +881,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -0.000061035156, y: -250}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3134420470005335982
 CanvasRenderer:
@@ -1322,7 +1322,7 @@ MonoBehaviour:
   xp: {fileID: 2631490956652469010}
   lvl: {fileID: 9144476446487065508}
   score: {fileID: 6663307828633754007}
-  brickCount: {fileID: 0}
+  brickCount: {fileID: 7753743052107753352}
   gmc: {fileID: 3668182804101225722}
 --- !u!1 &3318653811210011357
 GameObject:
