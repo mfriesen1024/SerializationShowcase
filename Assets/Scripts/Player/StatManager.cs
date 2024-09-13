@@ -25,6 +25,7 @@ namespace Assets.Scripts.Player
         public int xp { get => _xp; set => SetXP(value); }
         public int Score { get => score; set => score=value; }
         public int Level { get => level; }
+        public int BricksCount { get => CountBricks(); }
 
         /// <summary>
         /// Progression indicator.
@@ -40,6 +41,13 @@ namespace Assets.Scripts.Player
             mp++;
         }
 
+        // Count how many unique bricks the player has earned.
+        int CountBricks()
+        {
+            int i = 0;
+            foreach (bool b in bricks) { if (b) i++; }
+            return i;
+        }
 
         // Set the xp and define a level system.
         void SetXP(int value)

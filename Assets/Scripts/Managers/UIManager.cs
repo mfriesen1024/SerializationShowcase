@@ -14,7 +14,7 @@ namespace Assets.Scripts.Managers
         // Manual save
         [SerializeField] GameObject mso;
         Button ms;
-        [SerializeField] TextMeshProUGUI hp, mp, xp, lvl, score, gmc;
+        [SerializeField] TextMeshProUGUI hp, mp, xp, lvl, score, brickCount, gmc;
 
         AreaManager am;
         public int UIState { get => uiState; set { SetUIState(value); } }
@@ -73,14 +73,15 @@ namespace Assets.Scripts.Managers
             if (Input.GetKeyDown(KeyCode.Alpha4)) am.LoadScene(3); // press 4
         }
 
-        public void TextUpdate(int ihp, int imp, int ixp, int ilvl, int iscore)
+        public void TextUpdate(int ihp, int imp, int ixp, int ilvl, int iscore, int ibricks)
         {
             hp.text = $"HP: {ihp}";
             mp.text = $"MP: {imp}";
             xp.text = $"XP: {ixp}";
             lvl.text = $"Level: {ilvl}";
             score.text = $"Score: {iscore}";
-            gmc.text = $"Game Managers: {GameManager.GMCount}";
+            brickCount.text = $"Unique Bricks: {ibricks}";
+            gmc.text = $"Game Manager Instances: {GameManager.GMCount}";
         }
     }
 }

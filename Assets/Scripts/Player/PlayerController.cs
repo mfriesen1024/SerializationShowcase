@@ -98,7 +98,7 @@ namespace Assets.Scripts.Player
             {
                 tickNum = 0;
                 //GameManager.Instance.dataManager.Save();
-                GameManager.Instance.uiManager.TextUpdate(statMan.hp,statMan.mp,statMan.xp,statMan.Level,statMan.Score);
+                GameManager.Instance.uiManager.TextUpdate(statMan.hp,statMan.mp,statMan.xp,statMan.Level,statMan.Score,statMan.BricksCount);
             }
         }
 
